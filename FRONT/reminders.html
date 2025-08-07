@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reminders - TenantFlow</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="dashboard.css">
+    <style>
+        .reminder-types {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .type-card {
+            background: white;
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            flex: 1;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .type-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .type-card.active {
+            border: 2px solid var(--primary);
+        }
+        
+        .reminder-form {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid var(--light-gray);
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <i class="fas fa-building"></i>
+            <h2>TenantFlow</h2>
+        </div>
+        
+        <div class="sidebar-menu">
+            <a href="dashboard.html" class="menu-item">
+                <i class="fas fa-chart-line"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="tenants.html" class="menu-item">
+                <i class="fas fa-users"></i>
+                <span>Tenants</span>
+            </a>
+            <a href="payments.html" class="menu-item">
+                <i class="fas fa-dollar-sign"></i>
+                <span>Payments</span>
+            </a>
+            <a href="complaints.html" class="menu-item">
+                <i class="fas fa-tools"></i>
+                <span>Complaints</span>
+            </a>
+            <a href="reminders.html" class="menu-item active">
+                <i class="fas fa-bell"></i>
+                <span>Reminders</span>
+            </a>
+            <a href="reports.html" class="menu-item">
+                <i class="fas fa-chart-pie"></i>
+                <span>Reports</span>
+            </a>
+            <a href="settings.html" class="menu-item">
+                <i class="fas fa-cog"></i>
+                <span>Settings</span>
+            </a>
+            <a href="#" class="menu-item" id="logout-link">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Logout</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="header">
+            <div class="search-bar">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Search reminders...">
+            </div>
+            
+            <div class="user-info">
+                <i class="fas fa-bell"></i>
+                <div class="notification-badge">2</div>
+                <div class="user-avatar">LS</div>
+                <span>Landlord Dashboard</span>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="page-title">
+                <h1>Reminders & Notifications</h1>
+                <button class="btn btn-primary">
+                    <i class="fas fa-plus"></i> Create Reminder
+                </button>
+            </div>
+            
+            <div class="reminder-types">
+                <div class="type-card active">
+                    <i class="fas fa-file-invoice-dollar"></i>
+                    <h4>Rent Due</h4>
+                </div>
+                <div class="type-card">
+                    <i class="fas fa-tools"></i>
+                    <h4>Maintenance</h4>
+                </div>
+                <div class="type-card">
+                    <i class="fas fa-file-contract"></i>
+                    <h4>Lease Renewal</h4>
+                </div>
+                <div class="type-card">
+                    <i class="fas fa-calendar-check"></i>
+                    <h4>Inspection</h4>
+                </div>
+            </div>
+            
+            <div class="reminder-form">
+                <h3>Create New Reminder</h3>
+                <div class="form-group">
+                    <label>Reminder Type</label>
+                    <select>
+                        <option>Rent Due</option>
+                        <option>Maintenance</option>
+                        <option>Lease Renewal</option>
+                        <option>Inspection</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Recipient</label>
+                    <select>
+                        <option>All Tenants</option>
+                        <option>Specific Tenant</option>
+                        <option>Building A</option>
+                        <option>Building B</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Message</label>
+                    <textarea rows="4" placeholder="Enter reminder message..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Send Date & Time</label>
+                    <input type="datetime-local">
+                </div>
+                <button class="btn btn-primary">Schedule Reminder</button>
+            </div>
+
+            <div class="tabs">
+                <div class="tab active">Upcoming</div>
+                <div class="tab">Sent</div>
+                <div class="tab">Templates</div>
+            </div>
+
+            <div class="table-container">
+                <div class="table-header">
+                    <h3>Scheduled Reminders</h3>
+                    <div class="filters">
+                        <select>
+                            <option>All Types</option>
+                            <option>Rent Due</option>
+                            <option>Maintenance</option>
+                            <option>Lease Renewal</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Type</th>
+                            <th>Recipient</th>
+                            <th>Message</th>
+                            <th>Scheduled Date</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Rent Due</td>
+                            <td>Robert Davis (Apt 208)</td>
+                            <td>Friendly reminder: Rent payment for October is due in 3 days</td>
+                            <td>Oct 2, 2023</td>
+                            <td><span class="status status-pending">Scheduled</span></td>
+                            <td>
+                                <button class="action-btn edit">Edit</button>
+                                <button class="action-btn delete">Cancel</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Lease Renewal</td>
+                            <td>Michael Chen (Apt 105)</td>
+                            <td>Your lease agreement is expiring in 60 days. Please contact us to renew</td>
+                            <td>Oct 15, 2023</td>
+                            <td><span class="status status-pending">Scheduled</span></td>
+                            <td>
+                                <button class="action-btn edit">Edit</button>
+                                <button class="action-btn delete">Cancel</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Maintenance</td>
+                            <td>Sarah Johnson (Apt 302)</td>
+                            <td>Reminder: Annual HVAC maintenance scheduled for Oct 20</td>
+                            <td>Oct 18, 2023</td>
+                            <td><span class="status status-pending">Scheduled</span></td>
+                            <td>
+                                <button class="action-btn edit">Edit</button>
+                                <button class="action-btn delete">Cancel</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TenantFlow - Property Management Simplified</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="cityscape-bg"></div>
+    <div class="cityscape"></div>
+    
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <i class="fas fa-building logo-icon"></i>
+                    <span class="logo-text">TenantFlow</span>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#dashboard">Dashboard</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <button class="cta-button" onclick="window.location.href='login.html'">Get Started</button>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Simplify Property Management</h1>
+            <p>All-in-one solution for landlords and tenants to manage properties with ease</p>
+            <div class="hero-buttons">
+                <button class="cta-button" onclick="window.location.href='login.html?user=landlord'">Landlord Login</button>
+                <button class="secondary-button" onclick="window.location.href='login.html?user=tenant'">Tenant Login</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Powerful Features</h2>
+                <p class="section-subtitle">Everything you need to manage properties efficiently</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-users feature-icon"></i>
+                    <h3>Tenant Management</h3>
+                    <p>Track tenant information, lease terms, and communication history.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-dollar-sign feature-icon"></i>
+                    <h3>Rent Tracking</h3>
+                    <p>Automated payment tracking with due date reminders.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-tools feature-icon"></i>
+                    <h3>Maintenance Requests</h3>
+                    <p>Streamline repair requests with status tracking.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="dashboard" id="dashboard">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Interactive Dashboard</h2>
+                <p class="section-subtitle">Real-time insights at your fingertips</p>
+            </div>
+            <div class="dashboard-preview">
+                <div class="dashboard-card">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Financial Overview</h3>
+                    <p>Track income, expenses, and profitability</p>
+                </div>
+                <div class="dashboard-card">
+                    <i class="fas fa-calendar-check"></i>
+                    <h3>Upcoming Tasks</h3>
+                    <p>Never miss important deadlines</p>
+                </div>
+                <div class="dashboard-card">
+                    <i class="fas fa-exclamation-circle"></i>
+                    <h3>Active Issues</h3>
+                    <p>Monitor ongoing maintenance requests</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 TenantFlow. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

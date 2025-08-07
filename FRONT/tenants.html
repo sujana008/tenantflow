@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tenants - TenantFlow</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="dashboard.css">
+    <style>
+        /* Additional styles for tenant management */
+        .tenant-actions {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .tenant-details {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 20px;
+        }
+        
+        .detail-row {
+            display: flex;
+            margin-bottom: 15px;
+        }
+        
+        .detail-label {
+            font-weight: 600;
+            width: 150px;
+            color: var(--gray);
+        }
+        
+        .detail-value {
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <i class="fas fa-building"></i>
+            <h2>TenantFlow</h2>
+        </div>
+        
+        <div class="sidebar-menu">
+            <a href="dashboard.html" class="menu-item">
+                <i class="fas fa-chart-line"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="tenants.html" class="menu-item active">
+                <i class="fas fa-users"></i>
+                <span>Tenants</span>
+            </a>
+            <a href="payments.html" class="menu-item">
+                <i class="fas fa-dollar-sign"></i>
+                <span>Payments</span>
+            </a>
+            <a href="complaints.html" class="menu-item">
+                <i class="fas fa-tools"></i>
+                <span>Complaints</span>
+            </a>
+            <a href="reminders.html" class="menu-item">
+                <i class="fas fa-bell"></i>
+                <span>Reminders</span>
+            </a>
+            <a href="reports.html" class="menu-item">
+                <i class="fas fa-chart-pie"></i>
+                <span>Reports</span>
+            </a>
+            <a href="settings.html" class="menu-item">
+                <i class="fas fa-cog"></i>
+                <span>Settings</span>
+            </a>
+            <a href="#" class="menu-item" id="logout-link">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Logout</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="header">
+            <div class="search-bar">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Search tenants...">
+            </div>
+            
+            <div class="user-info">
+                <i class="fas fa-bell"></i>
+                <div class="notification-badge">5</div>
+                <div class="user-avatar">LS</div>
+                <span>Landlord Dashboard</span>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="page-title">
+                <h1>Tenant Management</h1>
+                <button class="btn btn-primary" id="addTenantBtn">
+                    <i class="fas fa-plus"></i> Add Tenant
+                </button>
+            </div>
+
+            <div class="table-container">
+                <div class="table-header">
+                    <h3>Current Tenants</h3>
+                    <div class="filters">
+                        <select>
+                            <option>All Buildings</option>
+                            <option>Building A</option>
+                            <option>Building B</option>
+                        </select>
+                        <select>
+                            <option>All Statuses</option>
+                            <option>Active</option>
+                            <option>Inactive</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Unit</th>
+                            <th>Contact</th>
+                            <th>Rent</th>
+                            <th>Lease End</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Sarah Johnson</td>
+                            <td>Apt 302</td>
+                            <td>sarah@email.com<br>(555) 123-4567</td>
+                            <td>$1,250</td>
+                            <td>Jun 30, 2024</td>
+                            <td><span class="status status-paid">Active</span></td>
+                            <td class="tenant-actions">
+                                <button class="action-btn edit">Edit</button>
+                                <button class="action-btn delete">Delete</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Michael Chen</td>
+                            <td>Apt 105</td>
+                            <td>michael@email.com<br>(555) 987-6543</td>
+                            <td>$1,100</td>
+                            <td>Mar 15, 2024</td>
+                            <td><span class="status status-paid">Active</span></td>
+                            <td class="tenant-actions">
+                                <button class="action-btn edit">Edit</button>
+                                <button class="action-btn delete">Delete</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Robert Davis</td>
+                            <td>Apt 208</td>
+                            <td>robert@email.com<br>(555) 456-7890</td>
+                            <td>$1,350</td>
+                            <td>Dec 31, 2023</td>
+                            <td><span class="status status-overdue">Overdue</span></td>
+                            <td class="tenant-actions">
+                                <button class="action-btn edit">Edit</button>
+                                <button class="action-btn delete">Delete</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="tenant-details">
+                <h3>Tenant Details</h3>
+                <div class="detail-row">
+                    <div class="detail-label">Full Name:</div>
+                    <div class="detail-value">Sarah Johnson</div>
+                </div>
+                <div class="detail-row">
+                    <div class="detail-label">Email:</div>
+                    <div class="detail-value">sarah@email.com</div>
+                </div>
+                <div class="detail-row">
+                    <div class="detail-label">Phone:</div>
+                    <div class="detail-value">(555) 123-4567</div>
+                </div>
+                <div class="detail-row">
+                    <div class="detail-label">Unit:</div>
+                    <div class="detail-value">Apt 302, Building A</div>
+                </div>
+                <div class="detail-row">
+                    <div class="detail-label">Lease Start:</div>
+                    <div class="detail-value">Jul 1, 2022</div>
+                </div>
+                <div class="detail-row">
+                    <div class="detail-label">Lease End:</div>
+                    <div class="detail-value">Jun 30, 2024</div>
+                </div>
+                <div class="detail-row">
+                    <div class="detail-label">Rent Amount:</div>
+                    <div class="detail-value">$1,250/month</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="dashboard.js"></script>
+    <script>
+        // Add Tenant Button functionality
+        document.getElementById('addTenantBtn')?.addEventListener('click', function() {
+            alert('Tenant creation form would open here');
+        });
+        
+        // Edit buttons
+        document.querySelectorAll('.action-btn.edit').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const row = this.closest('tr');
+                const name = row.querySelector('td:first-child').textContent;
+                alert(`Editing ${name}'s details`);
+            });
+        });
+        
+        // Delete buttons
+        document.querySelectorAll('.action-btn.delete').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const row = this.closest('tr');
+                const name = row.querySelector('td:first-child').textContent;
+                if(confirm(`Are you sure you want to delete ${name}'s record?`)) {
+                    row.remove();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
